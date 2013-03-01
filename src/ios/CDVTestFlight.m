@@ -148,5 +148,18 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void) setDeviceIdentifierUUID:(CDVInvokedUrlCommand*)command
+{
+    NSArray* arguments = command.arguments;
+    CDVPluginResult* pluginResult = nil;
+    
+#if DEBUG
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#else
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 
 @end

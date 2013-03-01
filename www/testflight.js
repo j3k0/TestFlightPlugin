@@ -106,6 +106,15 @@ cordova.define("cordova/plugin/testflightsdk", function(require, exports, module
 	TestFlight.prototype.setDeviceIdentifier = function(successCallback, failureCallback, deviceIdentifier) {
 	    exec(successCallback, failureCallback, this.serviceName, "setDeviceIdentifier", [ deviceIdentifier ]);
 	};
+	
+	/*
+     If app is compiled on DEBUG, sets the Device Identifier from actual UUID. 
+
+     Otherwise, does nothing
+    */
+	TestFlight.prototype.setDeviceIdentifierUUID = function(successCallback, failureCallback) {
+	    exec(successCallback, failureCallback, this.serviceName, "setDeviceIdentifierUUID", [ ]);
+	};
 
  	var testflight = new TestFlight();
  	module.exports = testflight;
