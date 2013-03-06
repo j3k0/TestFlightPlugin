@@ -61,6 +61,15 @@ and errors can only be gleaned from the run console, so check that for errors.
          @param checkpointName string
          */
         tf.passCheckpoint(successCallback, failureCallback, 'checkpointName');
+
+        /*
+         Send log message to testflight servers...
+     
+         @param successCallback function
+         @param failureCallback function
+         @param message string
+         */
+        tf.remoteLog(successCallback, failureCallback, 'message');
     
         /*
          Opens a feeback window that is not attached to a checkpoint

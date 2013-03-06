@@ -74,6 +74,17 @@ cordova.define("cordova/plugin/testflightsdk", function(require, exports, module
 	};
 
 	/*
+	 Remote logging
+
+	 @param successCallback function
+	 @param failureCallback function
+	 @param message string
+	 */
+	TestFlight.prototype.remoteLog = function(successCallback, failureCallback, message) {
+	    exec(successCallback, failureCallback, this.serviceName, "remoteLog", [ message ]);
+	};
+
+	/*
 	 Opens a feedback window that is not attached to a checkpoint
  
 	 @param successCallback function

@@ -106,6 +106,23 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void) remoteLog:(CDVInvokedUrlCommand*)command
+{
+    NSArray* arguments = command.arguments;
+    CDVPluginResult* pluginResult = nil;
+    
+    if ([arguments count] > 0) {
+        NSString* message = [arguments objectAtIndex:0];
+        TFLog(@"%@", message);
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"message property is missing."];
+    }
+    
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 - (void) openFeedbackView:(CDVInvokedUrlCommand*)command
 {
     [TestFlight openFeedbackView];
